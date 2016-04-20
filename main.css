@@ -5,7 +5,15 @@ html {
 }
 
 h3 {
+    margin-left: 10px;
     background-color: #98D2DE;
+}
+
+pre {
+    background-color: #440000;
+    color: white;
+    margin-left: 50px;
+    width: 500px;
 }
 
 .left {
@@ -31,4 +39,9 @@ h3 {
 
 .intransition {
     border-radius: 50%;
+}
+
+div.note {
+    margin-left: 10px;
+    margin-right: 200px;
 }
