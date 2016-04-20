@@ -3,6 +3,12 @@
   <head>
     <title>Raphexion Github Pages</title>
     <meta charset="UTF-8">
+
+    <!-- highlight code -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/androidstudio.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
     <link rel="stylesheet" type="text/css" href="main.css">
     <script type="text/javascript" src="main.js"></script>
   </head>
@@ -26,7 +32,7 @@
         <div>
 
           <h4>module.c</h4>
-          <pre>
+          <pre><code class="C">
 #include "module.h"
 
 int foo(int x, int y)
@@ -36,20 +42,20 @@ int foo(int x, int y)
 
   return x + y;
 }
-          </pre>
+          </code></pre>
 
           <h4>module.h</h4>
-          <pre>
+          <pre><code class="C">
 #ifndef MODULE_H
 #define MODULE_H
 
 int foo(int x, int y);
 
 #endif
-          </pre>
+          </code></pre>
 
           <h4>driver.py</h4>
-          <pre>
+          <pre><code class="python">
 import ctypes
 
 def main():
@@ -61,23 +67,23 @@ def main():
 
 if __name__ == '__main__':
     main()
-          </pre>
+          </code></pre>
         </div>
 
         <h4>Make a shared library to debug</h4>
-        <pre>
+        <pre><code class="bash">
 gcc -c -Wall -Werror -fpic -ggdb module.c
 gcc -shared -o libmodule.so module.o
-        </pre>
+        </code></pre>
 
         <h4>Run the program as normal</h4>
-        <pre>
+        <pre><code class="bash">
 $ python driver.py
 => 6
-        </pre>
+        </code></pre>
 
         <h4>Step the C code with gdb</h4>
-        <pre>
+        <pre><code class="bash">
 $ gdb python
 (gdb)
 (gdb) break foo
@@ -102,7 +108,7 @@ Breakpoint 1, foo (x=1, y=2) at module.c:5
 8	  return x + y;
 9	}
 (gdb)
-        </pre>
+        </code></pre>
         <p>2016-04-20</p>
       </div>
     </div>
