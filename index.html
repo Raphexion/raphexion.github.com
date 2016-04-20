@@ -15,8 +15,95 @@
     </div>
     <div>
       <h2>Embedded Systems</h2>
-      <div>
+      <div class="note">
         <h3>ftdi usb-serial cable</h3>
+      </div>
+    </div>
+    <div>
+      <h2>General Programming</h2>
+      <div class="note">
+        <h3>C + Python + GDB</h3>
+        <div>
+
+          <h3>module.c</h3>
+          <pre>
+#include "module.h"
+
+int foo(int x, int y)
+{
+  x += 1;
+  y += 2;
+
+  return x + y;
+}
+          </pre>
+
+          <h3>module.h</h3>
+          <pre>
+#ifndef MODULE_H
+#define MODULE_H
+
+int foo(int x, int y);
+
+#endif
+          </pre>
+
+          <h3>driver.py</h3>
+          <pre>
+import ctypes
+
+def main():
+    module = ctypes.CDLL('./libmodule.so')
+    module.foo.restype = int
+
+    z = module.foo(1, 2)
+    print(z)
+
+if __name__ == '__main__':
+    main()
+          </pre>
+        </div>
+
+        <h3>Make a shared library to debug</h3>
+        <pre>
+gcc -c -Wall -Werror -fpic -ggdb module.c
+gcc -shared -o libmodule.so module.o
+        </pre>
+
+        <h3>Run the program as normal</h3>
+        <pre>
+$ python driver.py
+=> 6
+        </pre>
+
+        <h3>Step the C code with gdb</h3>
+        <pre>
+$ gdb python
+(gdb)
+(gdb) break foo
+Function "foo" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) y
+Breakpoint 1 (foo) pending.
+(gdb)run driver.py
+Starting program: /usr/bin/python driver.py
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, foo (x=1, y=2) at module.c:5
+5	  x += 1;
+(gdb) list
+1	#include "module.h"
+2
+3	int foo(int x, int y)
+4	{
+5	  x += 1;
+6	  y += 2;
+7
+8	  return x + y;
+9	}
+(gdb)
+        </pre>
+        <p>2016-04-20</p>
       </div>
     </div>
   </body>
