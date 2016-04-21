@@ -41,12 +41,30 @@ exit
 
 psql --dbname cars --host localhost -U johnny
 *enter 1234 as password*
-
         </code></pre>
       </div>
     </div>
     <div>
       <h2>General Programming</h2>
+      <div class="note">
+        <h3>python + django + postgres</h3>
+        <div>
+          <pre><code class="bash">
+sudo apt-get install libpq-dev # needed for psycopg2
+
+virtualenv -p python3 foobar
+cd foobar
+
+source bin/activation # enter into virtual environment
+
+pip install django
+pip install postgres # (indirectly psycopg2)
+
+deactivate # exit virtual environment
+
+          </code></pre>
+        </div>
+      </div
       <div class="note">
         <h3>C + Python + GDB</h3>
         <div>
