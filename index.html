@@ -26,6 +26,26 @@
       </div>
     </div>
     <div>
+      <h2>Databases</h2>
+      <div class="note">
+        <h3>Postgresql fun</h3>
+        <pre><code class="bash">
+su postgres -
+psql
+
+CREATE USER johnny WITH PASSWORD '1234';
+CREATE DATABASE cars OWNER johnny;
+\q
+
+exit
+
+psql --dbname cars --host localhost -U johnny
+*enter 1234 as password*
+
+        </code></pre>
+      </div>
+    </div>
+    <div>
       <h2>General Programming</h2>
       <div class="note">
         <h3>C + Python + GDB</h3>
