@@ -13,12 +13,63 @@
     <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
+
     <div class="circle left"></div>
+
     <div>
       <h1>Random pieces of knowledge</h1>
       Inspired by Barry Watson's <a href="http://www.barrywatson.se/lsi/index.html">page</a>.
       I hope to collect some notes about what I read and play around with.
     </div>
+
+    <div class="category">
+      <h2>Virtualization</h2>
+      <div class="note">
+        <h3>Two vagrant machines</h3>
+        <pre><code class="bash">
+mkdir ~/MyMachines
+cd ~/MyMachines
+
+mkdir MachineA
+mkdir MachineB
+        </code></pre>
+        <pre><code class="bash">
+cd ~/MyMachines/MachineA
+vagrant init ubuntu/trusty64
+
+emacs Vagrantfile
+    config.vm.hostname = "machineA"
+    config.vm.network "forwarded_port", guest: 22, host: 6022
+vagrant up
+        </code></pre>
+        <pre><code class="bash">
+cd ~/MyMachines/MachineB
+vagrant init ubuntu/trusty64
+
+emacs Vagrantfile
+    config.vm.hostname = "machineB"
+    config.vm.network "forwarded_port", guest: 22, host: 7022
+vagrant up
+        </code></pre>
+        <h4>/etc/hosts</h4>
+        <pre><code class="bash">
+127.0.0.1 machineA
+127.0.0.1 machineB
+        </code></pre>
+        <h4>~/.ssh/config</h4>
+        <pre><code class="bash">
+Host machineA
+    User vagrant
+    Port 6022
+    IdentityFile ~/MyMachines/MachineA/.vagrant/machines/default/virtualbox/private_key
+
+Host machineA
+    User vagrant
+    Port 7022
+    IdentityFile ~/MyMachines/MachineB/.vagrant/machines/default/virtualbox/private_key
+        </code></pre>
+    </div>
+
     <div>
       <h2>Embedded Systems</h2>
       <div class="note">
@@ -53,6 +104,7 @@ psql --dbname cars --host localhost -U johnny
         </code></pre>
       </div>
     </div>
+
     <div>
       <h2>General Programming</h2>
       <div class="note">
