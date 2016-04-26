@@ -108,6 +108,48 @@ psql --dbname cars --host localhost -U johnny
     <div>
       <h2>General Programming</h2>
       <div class="note">
+        <h3>django + gunicorn</h3>
+          <pre><code class="bash">
+virtualenv -p python3 ~/mypython3env
+
+cd ~/mypython3env
+source bin/activate
+
+pip install django
+
+deactivate
+
+          </code></pre>
+          <pre><code class="bash">
+cd ~
+django-admin startproject testsite
+          </code></pre>
+          <pre><code class="bash">
+sudo apt-get install gunicorn
+          </code></pre>
+          <h4>/etc/gunicorn.d/mysite</h4>
+          <pre><code class="python">
+CONFIG = {
+    'mode': 'django',
+    'environment': {
+        'PYTHONPATH': '/home/torkel/testsite/:/home/torkel/mypython3env/lib/python3.4/site-packages/',
+    'PRODUCTION': '1',
+     },
+    'working_dir': '/home/torkel/testsite/',
+    'user': 'torkel',
+    'group': 'torkel',
+    'args': (
+        '--bind=127.0.0.1:8090',
+        '--workers=3',
+	'testsite.settings'
+    ),
+}
+          </code></pre>
+          <pre><code class="bash">
+sudo service gunicorn restart
+          </code></pre>
+      </div>
+      <div class="note">
         <h3>python + django + postgres</h3>
         <div>
           <pre><code class="bash">
