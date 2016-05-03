@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Raphexion Github Pages</title>
     <meta charset="UTF-8">
 
-    <!-- highlight code -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/androidstudio.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -12,20 +12,18 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <script type="text/javascript" src="main.js"></script>
   </head>
-  <body>
 
+  <body>
     <div class="circle left"></div>
 
-    <div>
-      <h1>Random pieces of knowledge</h1>
+    <div><h1>Random pieces of knowledge</h1>
       Inspired by Barry Watson's <a href="http://www.barrywatson.se/lsi/index.html">page</a>.
       I hope to collect some notes about what I read and play around with.
     </div>
 
     <div class="category">
       <h2>Virtualization</h2>
-      <div class="note">
-        <h3>Two vagrant machines</h3>
+      <div class="note"><h3>Two vagrant machines</h3>
         <pre><code class="bash">
 mkdir ~/MyMachines
 cd ~/MyMachines
@@ -70,8 +68,7 @@ Host machineA
         </code></pre>
     </div>
 
-    <div>
-      <h2>Embedded Systems</h2>
+    <div><h2>Embedded Systems</h2>
       <div class="note">
         <h3>ftdi usb-serial cable</h3>
       </div>
@@ -87,6 +84,68 @@ Host machineA
     </div>
     <div>
       <h2>Databases</h2>
+      <div class="note">
+        <h3>ldap</h3>
+
+        <h4>base_init.ldif</h4>
+        <pre><code class="ldif">
+dn: dc=couch-red,dc=com
+objectclass: dcObject
+objectclass: organization
+o: Couch Red Innovation
+dc: couch-red
+
+dn: cn=Manager,dc=couch-red,dc=com
+objectclass: organizationalRole
+cn: Manager
+        </code></pre>
+
+        <h4>users_group.ldif</h4>
+        <pre><code class="ldif">
+dn: ou=People,dc=couch-red,dc=com
+ou: People
+objectClass: top
+objectClass: organizationalUnit
+description: Parent object of all UNIX accounts
+
+dn: ou=Groups,dc=couch-red,dc=com
+ou: Groups
+objectClass: top
+objectClass: organizationalUnit
+description: Parent object of all UNIX groups
+
+dn: cn=users,ou=groups,dc=couch-red,dc=com
+cn: users
+objectClass: top
+objectClass: posixGroup
+gidNumber: 100
+        </code></pre>
+
+        <h4>gerrit.ldif</h4>
+        <pre><code class="ldif">
+dn: ou=Gerrit,dc=couch-red,dc=com
+objectClass: organizationalUnit
+ou: Gerrit
+description: Gerrit code review
+
+dn: cn=Gerrit Administrator,ou=gerrit,dc=couch-red,dc=com
+objectClass: groupOfNames
+cn: Gerrit Administrator
+description: Administer Gerrit users and system
+member: cn=Niklas Johansson,dc=couch-red,dc=com
+
+dn: cn=Developer,ou=Gerrit,dc=couch-red,dc=com
+objectClass: groupOfNames
+cn: Developer
+description: A developer using Gerrit
+member: cn=Niklas Johansson,dc=couch-red,dc=com
+        </code></pre>
+
+        <h4></h4>
+        <pre><code class="bash">
+ldapadd -x -W -D 'cn=Manager,dc=couch-red,dc=com' -f users_group.ldif -c
+        </code></pre>
+      </div>
       <div class="note">
         <h3>Postgresql fun</h3>
         <pre><code class="bash">
@@ -171,7 +230,6 @@ deactivate # exit virtual environment
       <div class="note">
         <h3>C + Python + GDB</h3>
         <div>
-
           <h4>module.c</h4>
           <pre><code class="C">
 #include "module.h"
