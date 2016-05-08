@@ -76,6 +76,27 @@ Host machineA
         <img src="usb_serial.png" alt="Connect to a raspberry pi" height="200px">
       </div>
       <div class="note">
+        <h3>Freescale/NTX</h3>
+        <div>
+          <h4>List devices</h4>
+          <pre>
+/opt/Freescale/KDS_v3/eclipse/plugins/com.pemicro.debug.gdbjtag.pne_2.3.6.201602211227/lin/pegdbserver_console -devicelist | grep KL
+          </pre>
+          <h4>Start gdb server</h4>
+          <pre>
+export DEVICE=NXP_KL4x_KL43Z256M4
+/opt/Freescale/KDS_v3/eclipse/plugins/com.pemicro.debug.gdbjtag.pne_2.3.6.201602211227/lin/pegdbserver_console -startserver -device=${DEVICE}
+          </pre>
+          <h4>Connect to gdb server</h4>
+          <pre>
+cd /opt/Freescale/KDS_v3/toolchain$
+./bin/arm-none-eabi-gdb
+...
+(gdb)
+(gdb) target remote localhost:7224
+          </pre>
+        </div>
+      <div class="note">
         <h3>AVR development with STK500</h3>
         <p>avrdude -c stk500 -p atmega88 -U flash:w:blinkLED.hex -P /dev/ttyUSB0</p>
       </div>
