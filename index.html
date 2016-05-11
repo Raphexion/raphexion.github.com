@@ -76,6 +76,14 @@ Host machineA
         <img src="usb_serial.png" alt="Connect to a raspberry pi" height="200px">
       </div>
       <div class="note">
+        <h3>Rasperry Pi</h3>
+        <h4>Download image (e.g, <a href="https://downloads.raspberrypi.org/raspbian_lite_latest.torrent">raspbian lite</a>)</h4>
+        <h4>Check checksum of zip (e.g, sha1sum 2016-03-18-raspbian-jessie-lite.zip)</h4>
+        <h4>Insert SD card</h4>
+        <h4>sudo umount /dev/mmcblk0p1</h4>
+        <h4>sudo dd bs=4M if=2016-03-18-raspbian-jessie-lite.img of=/dev/mmcblk0</h4>
+      </div>
+      <div class="note">
         <h3>Freescale/NTX</h3>
         <div>
           <h4>List devices</h4>
