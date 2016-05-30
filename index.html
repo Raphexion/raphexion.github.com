@@ -22,6 +22,51 @@
     </div>
 
     <div class="category">
+      <h2>Java / Maven</h2>
+      <div class="note"><h3>Maven fat-jar</h3>
+        <h4>pom.xml</h4>
+        <pre><code class="xml">
+&lt;project&gt;
+  &lt;groupId&gt;com.couch-red&lt;/groupId&gt;
+  &lt;artifactId&gt;hellorabbitmq&lt;/artifactId&gt;
+  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.rabbitmq&lt;/groupId&gt;
+      &lt;artifactId&gt;amqp-client&lt;/artifactId&gt;
+      &lt;version&gt;3.6.2&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;archive&gt;
+            &lt;manifest&gt;
+              &lt;mainClass&gt;HelloWorld&lt;/mainClass&gt;
+            &lt;/manifest&gt;
+          &lt;/archive&gt;
+          &lt;descriptorRefs&gt;
+            &lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;
+          &lt;/descriptorRefs&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;
+        </code></pre>
+        <h4>make jar</h4>
+        <pre><code class="bash">
+mvn clean compile assembly:single
+        </code></pre>
+        <h4>run</h4>
+        <pre><code class="bash">
+java -jar target/hellorabbitmq-1.0-SNAPSHOT-jar-with-dependencies.jar
+        </code></pre>
+      </div>
       <h2>Virtualization</h2>
       <div class="note"><h3>Two vagrant machines</h3>
         <pre><code class="bash">
@@ -83,7 +128,7 @@ Host machineA
         <h4>sudo umount /dev/mmcblk0p1</h4>
         <h4>sudo dd bs=4M if=2016-03-18-raspbian-jessie-lite.img of=/dev/mmcblk0</h4>
         <div>
-          <a href="http://www.briandorey.com/post/Raspberry-Pi-3-UART-Overlay-Workaround">UART problems</a>
+          <a href="http://www.briandorey.com/post/Raspberry-Pi-3-UART-Overlay-Workaround">UART problems</a>d
         </div>
       </div>
       <div class="note">
