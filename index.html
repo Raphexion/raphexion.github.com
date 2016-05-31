@@ -43,6 +43,16 @@
             <td>Maps an exchange to a queue (using topics, expressions)</td>
           </tr>
         </table>
+        <h4>List queues</h4>
+        <pre><code class="bash">
+sudo rabbitmqctl list_queues
+        </code></pre>
+        <h4>Flush / clean-up Rabbitmq</h4>
+        <pre><code class="bash">
+sudo rabbitmqctl stop_app
+sudo rabbitmqctl reset
+sudo rabbitmqctl start_app
+        </code></pre>
       </div>
       <h2>Java / Maven</h2>
       <div class="note"><h3>Maven fat-jar</h3>
