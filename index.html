@@ -15,9 +15,45 @@
 
   <body>
     <div class="circle left"></div>
-
     <div><h1>Random pieces of knowledge</h1>
       Random fragments of what I read and play around with.
+    </div>
+    <h2>OpenVPN / Ubuntu / Upstart</h2>
+    <div class="note"><h3>How to think about OpenVPN service(s)</h3>
+      <div>
+        Normally there is a 1-to-1 relationship between a service and a init/conf file.
+        For example you would run
+      <pre><code class="bash">
+service apache start
+      </code></pre>
+      This is not the case for OpenVPN. You may have multiple OpenVPN services,
+      each with it's own config file. For example, to start the "home" vpn you can type
+      <pre><code class="bash">
+service openvpn@home start
+      </code></pre>
+      It will the use the file defiend at
+      <pre><code class="bash">
+/etc/openvpn/home.conf
+      </code></pre>
+      To autoatically select which config files you want to use at startup,
+      please add the to this file:
+      <pre><code class="bash">
+/etc/default/openvpn
+      </code></pre>
+      An example if you want to start "home" and "banana" at startup you add
+      this line:
+      <pre><code class="bash">
+AUTOSTART="home banana"
+      </code></pre>
+      And the service will read the following 2 config files:
+      <pre><code class="bash">
+/etc/openvpn/home.conf
+/etc/openvpn/banana.conf
+      </code></pre>
+      </div>
+      <pre><code class="bash">
+cassandra -p cassandra.pid
+      </code></pre>
     </div>
     <h2>Cassandra</h2>
     <div class="note"><h3>Not starting, no error :(</h3>
