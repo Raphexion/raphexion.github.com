@@ -1,5 +1,5 @@
 window.onload = function() {
-    var ticktime = 5000;
+    var ticktime = 2000;
 
     var box = document.querySelector('.circle');
     box.left = true;
