@@ -1,0 +1,32 @@
+{
+    "ignition": {
+	"version": "2.0.0",
+	"config": {}
+    },
+    "storage": {},
+    "systemd": {},
+    "networkd": {},
+    "passwd": {
+	"users": [
+	    {
+		"name": "core",
+		"sshAuthorizedKeys": [
+		    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDygrCxKwCOE6VrgjZHvIyiJJdW44VZz2nOkpwbUJRRg8XGl9DHiMuWmArHoTp8kXcA/Ujtr8sLBsKvdohOdPvRsqbpG9CMYrVIg2WXMHAdpVuRw+xbtz6QFgFVzfpPv1NDQnspX+8aq/Ak5s8xjD2NuT0Av0ZmmbIPj1kUOpqHT1SA/d2GnYFwhwSdAKGS+vWww/nRjal3bUikDt3ojqTR/B9PNjeNw4w8IijerYQqinE9oKA8mhupyMlQ3wJgaCve40sTgpEHQsVxzAeT7tkufB0nLye8olo4maVIf/MOdW/xjpNQ5QYSOcvucpfTSNsOlciIJR2cci1XI6smwBwR nsjo@nijo"
+		]
+	    },
+	    {
+		"name": "nsjo",
+		"passwordHash": "$6$5s2u6/jR$un0AvWnqilcgaNB3Mkxd5yYv6mTlWfOoCYHZmfi3LDKVltj.E8XNKEcwWm...",
+		"sshAuthorizedKeys": [
+		    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDygrCxKwCOE6VrgjZHvIyiJJdW44VZz2nOkpwbUJRRg8XGl9DHiMuWmArHoTp8kXcA/Ujtr8sLBsKvdohOdPvRsqbpG9CMYrVIg2WXMHAdpVuRw+xbtz6QFgFVzfpPv1NDQnspX+8aq/Ak5s8xjD2NuT0Av0ZmmbIPj1kUOpqHT1SA/d2GnYFwhwSdAKGS+vWww/nRjal3bUikDt3ojqTR/B9PNjeNw4w8IijerYQqinE9oKA8mhupyMlQ3wJgaCve40sTgpEHQsVxzAeT7tkufB0nLye8olo4maVIf/MOdW/xjpNQ5QYSOcvucpfTSNsOlciIJR2cci1XI6smwBwR nsjo@nijo"
+		],
+		"create": {
+		    "groups": [
+			"sudo",
+			"docker"
+		    ]
+		}
+	    }
+	]
+    }
+}
