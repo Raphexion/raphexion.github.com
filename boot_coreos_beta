@@ -1,6 +1,6 @@
 #!ipxe
 
 set base-url http://beta.release.core-os.net/amd64-usr/current
-kernel ${base-url}/coreos_production_pxe.vmlinuz cloud-config-url=http://raphexion.github.io/cloud-config
+kernel ${base-url}/coreos_production_pxe.vmlinuz coreos.autologin coreos.config.url=http://raphexion.github.io/pxe-config.ign
 initrd ${base-url}/coreos_production_pxe_image.cpio.gz
 boot
